@@ -44,10 +44,9 @@ On which days did more than 1% of requests lead to errors?
 
  ## Views
 
-Use `CREATE VIEW [view name] AS` then the query to create each view in the database.
-
  ### authors_articles
 ````sql
+CREATE VIEW authors_articles AS 
 SELECT count(articles.title) AS countt, 
     articles.author, authors.name 
   FROM authors 
@@ -57,11 +56,13 @@ SELECT count(articles.title) AS countt,
  
  ### Articles1
  ````sql
+ CREATE VIEW Articles1 AS 
  SELECT CONCAT('/article/',slug) AS slug_revised, slug, author, title, id   FROM articles;
 ````
 
 ### request_404
 ````sql
+CREATE VIEW request_404 AS 
  SELECT count(log.id) AS total, 
       date(log.time) AS day  
     FROM log 
@@ -72,6 +73,7 @@ SELECT count(articles.title) AS countt,
 
 ### request_all
 ````sql
+CREATE VIEW request_all AS 
 SELECT count(log.id) AS total, 
     date(log.time) AS day  
   FROM log 
